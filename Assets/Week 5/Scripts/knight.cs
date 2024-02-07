@@ -37,7 +37,7 @@ public class knight : MonoBehaviour
     void Update()
     {
         if(isDead) return;
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0) && !clickingOnSelf)
         {
             destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
