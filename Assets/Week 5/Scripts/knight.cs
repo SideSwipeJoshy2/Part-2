@@ -32,17 +32,26 @@ public class knight : MonoBehaviour
             move = Vector2.zero;
         }
         rb.MovePosition(rb.position + move.normalized * speed * Time.deltaTime);
+        
+        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isDead) return;
+        if (isDead) return;
         if (Input.GetMouseButtonDown(0) && !clickingOnSelf)
         {
             destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
         animator.SetFloat("movement", move.magnitude);
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            animator.SetTrigger("attack");
+        }
+
     }
 
     private void OnMouseDown()
@@ -54,9 +63,12 @@ public class knight : MonoBehaviour
         
     }
 
+
     private void OnMouseUp()
     {
         clickingOnSelf = false;
+
+        
     }
 
    public void TakeDamage(float damage)
