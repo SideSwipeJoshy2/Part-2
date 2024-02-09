@@ -7,9 +7,9 @@ public class Weapon : MonoBehaviour
 {
     public Rigidbody rigidBody;
     public Transform spawn;
-    public GameObject ballPrefab;
-    public float speed = 3;
-    float timeRemaining = 10;
+    public GameObject axePrefab;
+    float timer = 5;
+    float speed = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,13 +29,13 @@ public class Weapon : MonoBehaviour
         transform.Translate(1 * speed * Time.deltaTime, 0 ,0);
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            Instantiate(ballPrefab, spawn.position, spawn.rotation);
+            Instantiate(axePrefab, spawn.position, spawn.rotation);
            
         }
 
-        if (timeRemaining > 0)
+        if (timer > 0)
         {
-            timeRemaining -= Time.deltaTime;
+            timer -= Time.deltaTime;
         }
         else
         {
