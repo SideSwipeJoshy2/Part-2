@@ -5,11 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoade : MonoBehaviour
 {
-  public void LoadNextScene()
-    { 
+  public void Update()
+    {
+        if (Input.GetKey(KeyCode.N))
+        {
 
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
-        SceneManager.LoadScene(nextSceneIndex);
+
+
+
+        
+            SceneManager.LoadScene(nextSceneIndex);
+
+        }
+        
     }
 }
