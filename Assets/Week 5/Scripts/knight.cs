@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class knight : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class knight : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         health = maxHealth;
+        health = PlayerPrefs.GetFloat("hp");
     }
 
     private void FixedUpdate()
