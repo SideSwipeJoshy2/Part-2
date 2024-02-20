@@ -15,11 +15,15 @@ public class playermovement : MonoBehaviour
     Vector2 destination;
     bool clickSelf = false;
     public float speed = 3;
+    public float stamina;
+    public float maxStam = 5;
+    bool noStam = false;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        stamina = maxStam;
     }
 
     private void FixedUpdate()
@@ -38,7 +42,7 @@ public class playermovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !clickSelf)
+        if (Input.GetMouseButtonDown(0) && !clickSelf && !EventSystem.current.IsPointerOverGameObject())
         {
             destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
@@ -46,7 +50,39 @@ public class playermovement : MonoBehaviour
 
     }
 
-    
+    private void OnMouseDown()
+    {
+        
+        clickSelf = true;
+        SendMessage("stamDrain", 1);
+
+    }
+
+
+    private void OnMouseUp()
+    {
+        clickSelf = false;
+
+
+    }
+
+
+    public void stamDrain(float lowStam)
+    {
+        stamina -= lowStam;
+        stamina = Mathf.Clamp(stamina, 0, maxStam);
+        if (stamina <= 0)
+        {
+            noStam = true;
+            //animator.SetTrigger("");
+
+        }
+        else
+        {
+            noStam = false;
+            animator.SetTrigger("loseStam");
+        }
+    }
 
 }
 
