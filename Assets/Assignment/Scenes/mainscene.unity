@@ -902,7 +902,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7399819286629474002}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Stamina, Assembly-CSharp
         m_MethodName: drainStam
         m_Mode: 4
@@ -1364,7 +1364,6 @@ GameObject:
   - component: {fileID: 4516731545114881383}
   - component: {fileID: 1253010764}
   - component: {fileID: 1253010775}
-  - component: {fileID: 7399819286629474002}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -1372,19 +1371,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7399819286629474002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7399819286629474001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd6a570683a226f4e9f326cfd10653c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

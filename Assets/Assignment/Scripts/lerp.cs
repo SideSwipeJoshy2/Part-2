@@ -6,12 +6,12 @@ using UnityEngine;
 
 public class lerp : MonoBehaviour
 {
-    public AnimationCurve animationCurve;
+    public AnimationCurve animationCurve; //setup
     public Transform startPosition;
     public Transform endPosition;
     public float lerpTimer;
     public float interpolation;
-    public float speed =0.00005f;
+    public float speed =0.00005f;//slow speed to make the orb dodgeable especially with the speed boost
 
 
     // Start is called before the first frame update

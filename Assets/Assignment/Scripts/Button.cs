@@ -5,14 +5,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Button : MonoBehaviour
+public class Button : MonoBehaviour//was the name of the old use for this script, figured that it would still work for the orb though
 {
     public GameObject prefab;
-    float position;
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.SendMessage("stamDrain", 1, SendMessageOptions.DontRequireReceiver);
+        collision.gameObject.SendMessage("stamDrain", 1, SendMessageOptions.DontRequireReceiver);///uses send message to allow the player to take damage from the orb
     }
 
     
