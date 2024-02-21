@@ -7,8 +7,8 @@ using UnityEngine;
 public class Stamina : MonoBehaviour
 {
     public Slider slider;
-    public void drainStam(float stam)
+    public void drainStam(float lowstam)
     {
-        slider.value -= stam;
+        slider.value -= lowstam;
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using JetBrains.Annotations;
+
     
 
 
@@ -20,15 +20,16 @@ public class playermovement : MonoBehaviour
     bool noStam = false;
     // Start is called before the first frame update
     void Start()
-    {
+    {//setup for player and health
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         stamina = maxStam;
+      
     }
 
     private void FixedUpdate()
     {
-        if (noStam) return;
+        if (noStam) return; //checks if the player has no stamina and if so prevents the player from doing anything except refill stamina
         move = destination - (Vector2)transform.position;
         if (move.magnitude < 0.1)
         {
@@ -44,11 +45,11 @@ public class playermovement : MonoBehaviour
     void Update()
     {
         if (noStam) return;
-        if (Input.GetMouseButtonDown(0) && !clickSelf && !EventSystem.current.IsPointerOverGameObject())
+        if (Input.GetMouseButtonDown(0) && !clickSelf && !EventSystem.current.IsPointerOverGameObject())//mouse movement
         {
             destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
-        animator.SetFloat("movement", move.magnitude);
+        animator.SetFloat("movement", move.magnitude);//speed boost
         if (Input.GetKey(KeyCode.Space)) 
             {
             Random.Range(speed = 5, 10);
@@ -56,7 +57,7 @@ public class playermovement : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
+    private void OnMouseDown()//debug help
     {
         if (noStam) return;
         clickSelf = true;
@@ -73,17 +74,18 @@ public class playermovement : MonoBehaviour
     }
 
 
-    public void stamDrain(float lowStam)
+    public void stamDrain(float lowStam)//checks player's health and if it is too low they are unable to move
     {
         stamina -= lowStam;
         stamina = Mathf.Clamp(stamina, 0, maxStam);
+        print(stamina);
         if (stamina <= 0)
         {
             noStam = true;
             animator.SetTrigger("death");
 
         }
-        else
+        else//if player has hp they can continue playing
         {
             noStam = false;
             animator.SetTrigger("loseStam");
