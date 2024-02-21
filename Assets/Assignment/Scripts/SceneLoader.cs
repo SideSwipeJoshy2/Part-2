@@ -9,10 +9,10 @@ public class SceneLoader : MonoBehaviour
 {
     public void Update()
     {
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S)) // if s is pressed go to next scene
         {
 
-            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex; //loads the next scene
             int nextSceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
 
 
