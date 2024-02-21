@@ -28,6 +28,7 @@ public class playermovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (noStam) return;
         move = destination - (Vector2)transform.position;
         if (move.magnitude < 0.1)
         {
@@ -42,17 +43,22 @@ public class playermovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (noStam) return;
         if (Input.GetMouseButtonDown(0) && !clickSelf && !EventSystem.current.IsPointerOverGameObject())
         {
             destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
         animator.SetFloat("movement", move.magnitude);
-
+        if (Input.GetKey(KeyCode.Space)) 
+            {
+            Random.Range(speed = 5, 10);
+            animator.SetTrigger("boost");
+        }
     }
 
     private void OnMouseDown()
     {
-        
+        if (noStam) return;
         clickSelf = true;
         SendMessage("stamDrain", 1);
 
@@ -74,7 +80,7 @@ public class playermovement : MonoBehaviour
         if (stamina <= 0)
         {
             noStam = true;
-            //animator.SetTrigger("");
+            animator.SetTrigger("death");
 
         }
         else
